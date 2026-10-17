@@ -1,0 +1,360 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Vedansh Dev Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Layout concept: the portfolio slides turned into a scrolling site. Paper-white cover, then charcoal sections with dust, two-line white and red titles, brick-red pills and bars. */
+:root {
+  --bg: #1e1e1e;
+  --bg2: #262626;
+  --paper: #fcfcfc;
+  --fg: #f2f2f2;
+  --muted: #a3a3a3;
+  --line: #3a3a3a;
+  --red: #c05a5c;
+  --red-text: #d98486;
+  --pill-a: #8a4546;
+  --pill-b: #5a3132;
+  --display: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--display); font-size: 16px; line-height: 1.6; position: relative;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: url("img/dust.png") repeat; background-size: 700px 700px; opacity: .55;
+}
+main, nav, footer { position: relative; z-index: 1; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--red-text); outline-offset: 3px; }
+.in {
+  max-width: 1200px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* nav */
+.top { background: rgba(30,30,30,.94); border-bottom: 1px solid var(--line); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; }
+body > .top-fill { position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 30; }
+.top .in { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 14px; }
+.brand { font-weight: 800; letter-spacing: .08em; font-size: 15px; text-decoration: none; text-transform: uppercase; }
+.brand span { color: var(--red-text); }
+.top nav { display: flex; gap: 6px 22px; flex-wrap: wrap; }
+.top nav a { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--muted); font-weight: 500; }
+.top nav a:hover { color: var(--fg); }
+.top nav a.hire { color: var(--fg); padding: 8px 16px; border-radius: 12px; border: 1px solid rgba(217,132,134,.35); background: linear-gradient(180deg, var(--pill-a), var(--pill-b)); font-weight: 600; }
+.top nav a.hire:hover { border-color: var(--red-text); }
+.btn.hire-big { font-weight: 700; padding: 14px 26px; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; }
+
+/* cover */
+.cover { background: var(--paper); position: relative; z-index: 1; }
+.cover img { display: block; width: 100%; max-width: 1400px; height: auto; margin: 0 auto; }
+
+/* titles */
+section { padding-block: 96px 0; position: relative; }
+.eyebrow { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 300; }
+.title { text-align: center; margin: 56px 0 56px; font-weight: 400; text-transform: uppercase; font-size: clamp(34px, 7.2vw, 88px); line-height: 1.06; letter-spacing: .005em; text-wrap: balance; }
+.title b { display: block; font-weight: 400; color: var(--red); }
+h2.h { font-size: clamp(30px, 5vw, 56px); font-weight: 800; text-transform: uppercase; margin: 0 0 32px; line-height: 1.05; letter-spacing: -.005em; }
+.arrow { color: var(--red); margin-right: 10px; font-weight: 700; }
+
+/* contents */
+.panel { border: 2px solid var(--line); border-radius: 36px; padding: clamp(20px, 5vw, 56px); background: rgba(255,255,255,.015); }
+.pills { display: grid; grid-template-columns: 1fr 1fr; gap: 28px clamp(16px, 4vw, 40px); list-style: none; margin: 0; padding: 0; counter-reset: c; }
+.pills li { display: flex; align-items: center; gap: 14px; min-width: 0; counter-increment: c; }
+.pills li::before { content: counter(c) "."; font-weight: 800; font-size: clamp(28px, 4.5vw, 48px); line-height: 1; }
+.pills a { flex: 1; min-width: 0; text-decoration: none; text-transform: uppercase; font-weight: 400; font-size: clamp(12px, 1.7vw, 19px); letter-spacing: .01em; padding: 14px 18px; border-radius: 14px; border: 1px solid rgba(217,132,134,.28); background: linear-gradient(180deg, var(--pill-a), var(--pill-b)); transition: transform .2s, border-color .2s; }
+.pills a:hover { transform: translateY(-2px); border-color: var(--red-text); }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 6vw, 72px); align-items: center; }
+.ph { position: relative; padding-left: 16%; }
+.ph::before { content: ""; position: absolute; left: 0; top: 0; width: 28%; height: 100%; background: var(--red); }
+.ph img { position: relative; display: block; width: 100%; height: auto; max-width: 100%; }
+.hi { font-size: clamp(18px, 2.2vw, 26px); font-weight: 500; margin: 0; }
+.name { font-size: clamp(46px, 7.5vw, 92px); font-weight: 500; line-height: .98; letter-spacing: -.03em; margin: 4px 0 24px; }
+.name em { font-style: normal; color: var(--red); }
+.bio { color: #cfcfcf; max-width: 52ch; margin: 0 0 36px; font-weight: 400; }
+.stats { display: flex; gap: 0; flex-wrap: wrap; }
+.stat { border-left: 3px solid var(--red); padding: 2px 22px 2px 16px; font-size: clamp(15px, 1.8vw, 20px); line-height: 1.3; }
+.stat:last-child { border-right: 3px solid var(--red); }
+.stat b { display: block; font-weight: 600; }
+.stat span { font-weight: 600; color: #ddd; }
+
+/* expertise */
+.exp { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 8px 32px; list-style: none; margin: 0 0 64px; padding: 0 0 0 8px; }
+.exp ul { margin: 0; padding: 0; list-style: none; }
+.exp li { position: relative; padding-left: 26px; font-size: clamp(17px, 2vw, 24px); font-weight: 400; line-height: 1.45; margin-bottom: 10px; }
+.exp li::before { content: ""; position: absolute; left: 0; top: .6em; width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+.soft { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px 48px; }
+.app { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 4px 18px; align-items: center; }
+.app .ic { width: 64px; height: 64px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 26px; letter-spacing: -.02em; }
+.app .nm { font-size: clamp(18px, 2vw, 24px); font-weight: 400; line-height: 1.25; }
+.app .meter { grid-column: 1 / -1; height: 9px; border-radius: 6px; background: #5b5b5b; overflow: hidden; margin-top: 6px; }
+.app .meter i { display: block; height: 100%; width: var(--p); background: var(--red); border-radius: 6px; }
+
+/* videos */
+.vgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 36px 28px; }
+.vgrid.one { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); align-items: center; gap: clamp(24px, 6vw, 72px); }
+.vgrid.one.rev { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); margin-top: clamp(64px, 9vw, 112px); }
+.vgrid.rev .vc { order: 2; }
+.vc { min-width: 0; }
+.vwrap { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 22px; overflow: hidden; background: #000; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.vwrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.vc h3 { margin: 18px 0 4px; font-size: 20px; font-weight: 600; line-height: 1.25; }
+.vc p { margin: 0; font-size: 14px; color: var(--muted); }
+.vc .tag { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--red-text); font-weight: 600; }
+.side h3 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
+.side p { color: #cfcfcf; max-width: 44ch; margin: 0 0 18px; }
+
+/* gallery */
+.gal { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px; }
+.gal figure { margin: 0; min-width: 0; }
+.gal img { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 4px; box-shadow: 0 24px 56px rgba(0,0,0,.5); transition: transform .35s ease; }
+.gal figure:hover img { transform: translateY(-6px); }
+.gal figcaption { margin-top: 14px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+
+/* thanks + contact */
+.thanks { padding-top: 112px; }
+.thanks img { display: block; width: 100%; height: auto; max-width: 100%; }
+.contact { padding-block: 56px 72px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: center; }
+.contact .mail { font-size: clamp(22px, 4vw, 44px); font-weight: 600; letter-spacing: -.02em; overflow-wrap: anywhere; margin: 6px 0 0; }
+.links { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { font-family: var(--display); font-size: 14px; font-weight: 500; text-decoration: none; padding: 12px 20px; border-radius: 14px; border: 1px solid rgba(217,132,134,.35); background: linear-gradient(180deg, var(--pill-a), var(--pill-b)); color: var(--fg); cursor: pointer; }
+.btn:hover { border-color: var(--red-text); }
+footer { border-top: 1px solid var(--line); }
+footer .in { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 20px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+@media (max-width: 800px) {
+  .about { grid-template-columns: 1fr; }
+  .vgrid.one { grid-template-columns: 1fr; }
+  .vgrid.one .vwrap { max-width: 340px; }
+  .vgrid.one.rev { grid-template-columns: 1fr; }
+  .vgrid.rev .vc { order: 0; }
+  .contact { grid-template-columns: 1fr; }
+  section { padding-block-start: 72px; }
+}
+@media (max-width: 520px) {
+  .pills { grid-template-columns: 1fr; }
+  .stat { padding-right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pills a, .gal img { transition: none; }
+}
+</style>
+
+<div class="top-fill"></div>
+<header class="top">
+  <div class="in">
+    <a class="brand" href="#top" id="brand">Vedansh <span>Dev</span></a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#motion">Motion</a>
+      <a href="#reels">Reels</a>
+      <a href="#graphics">Graphics</a>
+      <a href="#contact">Contact</a>
+      <a class="hire" href="https://wa.me/918827873467?text=I%20want%20to%20hire%20you" target="_blank" rel="noopener">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="cover">
+    <img src="img/cover.jpg" width="1604" height="792" alt="Vedansh Dev, video editor and motion designer. Portfolio.">
+  </div>
+
+  <section id="contents">
+    <div class="in">
+      <h2 class="h">Contents</h2>
+      <div class="panel">
+        <ol class="pills" style="list-style:none;margin:0;padding:0">
+          <li><a href="#motion">Motion graphics</a></li>
+          <li><a href="#reels">Social media reels</a></li>
+          <li><a href="#graphics">Graphic designing</a></li>
+          <li><a href="#contact">Get in touch</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="in">
+      <div class="about">
+        <div class="ph"><img src="img/portrait.jpg" width="552" height="625" alt="Black and white portrait of Vedansh Dev"></div>
+        <div>
+          <p class="hi">Hi, I am</p>
+          <h2 class="name">Vedansh <em>Dev</em></h2>
+          <p class="bio">I am a passionate visual storyteller specializing in motion graphics, cinematic video editing, and digital content creation. I have a strong eye for detail and a deep understanding of current visual trends, which helps me create engaging and impactful content that connects with modern audiences.</p>
+          <div class="stats">
+            <div class="stat"><span>2 years</span><b>Experience</b></div>
+            <div class="stat"><span>100+ videos</span><b>Completed</b></div>
+            <div class="stat"><span>Brand</span><b>Collaborations</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="in">
+      <h2 class="h"><span class="arrow">&#8599;</span>Expertise</h2>
+      <div class="exp">
+        <ul><li>Skilled in Video Editing</li><li>Professional Videography</li><li>Creative Graphic Designing</li></ul>
+        <ul><li>Motion Graphics</li><li>Social Media Handling</li></ul>
+        <ul><li>Photography</li><li>Brand Focused Content Creation</li></ul>
+      </div>
+      <h2 class="h"><span class="arrow">&#8599;</span>Software proficiency</h2>
+      <div class="soft" id="soft"></div>
+    </div>
+  </section>
+
+  <section id="motion">
+    <div class="in">
+      <div class="eyebrow"><span>Portfolio 2026</span><span>Selected work 2024&ndash;2025</span></div>
+      <h2 class="title">Motion graphics<b>videos</b></h2>
+      <div class="vgrid one" id="v-motion"></div>
+      <div class="vgrid one rev" id="v-ba"></div>
+    </div>
+  </section>
+
+  <section id="reels">
+    <div class="in">
+      <div class="eyebrow"><span>Portfolio 2026</span><span>Selected work 2024&ndash;2025</span></div>
+      <h2 class="title">Social media<b>reels</b></h2>
+      <div class="vgrid" id="v-reels"></div>
+    </div>
+  </section>
+
+  <section id="graphics">
+    <div class="in">
+      <div class="eyebrow"><span>Portfolio 2026</span><span>Selected work 2024&ndash;2025</span></div>
+      <h2 class="title">Graphic<b>designing</b></h2>
+      <div class="gal" id="gal"></div>
+    </div>
+  </section>
+
+  <section class="thanks">
+    <img src="img/thanks.jpg" width="1587" height="507" alt="Thank you for viewing my work. I look forward to creating more impactful visuals and new creative opportunities.">
+  </section>
+
+  <section id="contact" style="padding-block:0">
+    <div class="in contact">
+      <div>
+        <div class="eyebrow" style="justify-content:flex-start">Let's work together</div>
+        <p class="mail" id="mail">vedanshdev09@gmail.com</p>
+      </div>
+      <div class="links">
+        <a class="btn hire-big" href="https://wa.me/918827873467?text=I%20want%20to%20hire%20you" target="_blank" rel="noopener">Hire me on WhatsApp</a>
+        <button class="btn" type="button" id="copy">Copy email</button>
+           
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="in"><span>&copy; 2026 Vedansh Dev</span><span>Video editor &middot; Motion designer</span></div></footer>
+
+<script>
+/* Edit these to update the site. Video files live in media/, images in img/. */
+var CONFIG = {
+  email: "hello@yourmail.com",
+  motion: [
+    { src: "media/reel-main.mp4", poster: "img/poster-reel-main.jpg", title: "Creator Carousel Intro", meta: "0:29 · Vertical 9:16", tag: "Motion graphics",
+      note: "A motion-graphics intro built around software icons orbiting the presenter, finished with a clean, bright colour treatment." }
+  ],
+  ba: [
+    { src: "media/before-after.mp4", poster: "img/poster-before-after.jpg", title: "Before and After", meta: "0:12 · Vertical 9:16", tag: "Edit breakdown",
+      note: "The raw clip on one side and the finished edit on the other, so you can see what the cut adds: captions, motion graphics, transitions and cleaner framing." }
+  ],
+  reels: [
+    { src: "media/reel-1.mp4", poster: "img/poster-reel-1.jpg", title: "Hypercar Edit", meta: "0:41 · Vertical 9:16", tag: "Social media reel" },
+    { src: "media/reel-2.mp4", poster: "img/poster-reel-2.jpg", title: "Gym Motivation Reel", meta: "1:03 · Vertical 9:16", tag: "Social media reel" },
+    { src: "media/reel-3.mp4", poster: "img/poster-reel-3.jpg", title: "BMW Drift Edit", meta: "0:32 · Vertical 9:16", tag: "Social media reel" }
+  ],
+  posters: [
+    { src: "img/poster-shibuya.jpg", t: "Shibuya", w: 460, h: 633 },
+    { src: "img/poster-achromatic.jpg", t: "Achromatic", w: 461, h: 633 },
+    { src: "img/poster-moon.jpg", t: "Moon portrait", w: 474, h: 633 },
+    { src: "img/poster-nihon.jpg", t: "Nihon Culture Club workshop", w: 457, h: 645 },
+    { src: "img/poster-obon.jpg", t: "Obon Festival", w: 456, h: 645 },
+    { src: "img/poster-diwali.jpg", t: "YouTube Thumbnail", w: 457, h: 645 }
+  ],
+  software: [
+    { n: "Adobe After Effects", i: "Ae", bg: "#00005b", fg: "#9999ff", p: 95 },
+    { n: "Adobe Premiere Pro", i: "Pr", bg: "#00005b", fg: "#9999ff", p: 87 },
+    { n: "Adobe Photoshop", i: "Ps", bg: "#001e36", fg: "#31a8ff", p: 92 },
+    { n: "Adobe Illustrator", i: "Ai", bg: "#330000", fg: "#ff9a00", p: 88 },
+    { n: "Canva", i: "Canva", bg: "linear-gradient(135deg,#00c4cc,#7d2ae8)", fg: "#fff", p: 96 },
+    { n: "CapCut", i: "C", bg: "#fff", fg: "#111", p: 94 }
+  ]
+};
+
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  var videos = [];
+
+  function card(v, side) {
+    var c = el("div", "vc");
+    var w = el("div", "vwrap");
+    var vid = document.createElement("video");
+    vid.src = v.src; vid.poster = v.poster; vid.controls = true; vid.preload = "none"; vid.playsInline = true;
+    vid.setAttribute("controlslist", "nodownload");
+    vid.setAttribute("aria-label", v.title);
+    vid.addEventListener("play", function () { videos.forEach(function (o) { if (o !== vid) o.pause(); }); });
+    videos.push(vid); w.appendChild(vid); c.appendChild(w);
+    if (side) {
+      var s = el("div", "side");
+      s.appendChild(el("span", "tag", v.tag));
+      s.appendChild(el("h3", null, v.title));
+      s.appendChild(el("p", null, v.note));
+      s.appendChild(el("p", null, v.meta));
+      return [c, s];
+    }
+    c.appendChild(el("h3", null, v.title));
+    c.appendChild(el("p", null, v.meta));
+    c.appendChild(el("span", "tag", v.tag));
+    return [c];
+  }
+  CONFIG.motion.forEach(function (v) { card(v, true).forEach(function (n) { $("v-motion").appendChild(n); }); });
+  CONFIG.ba.forEach(function (v) { card(v, true).forEach(function (n) { $("v-ba").appendChild(n); }); });
+  CONFIG.reels.forEach(function (v) { card(v, false).forEach(function (n) { $("v-reels").appendChild(n); }); });
+
+  CONFIG.posters.forEach(function (p, i) {
+    var f = el("figure");
+    var im = document.createElement("img");
+    im.src = p.src; im.alt = p.t + " poster"; im.width = p.w; im.height = p.h; im.loading = "lazy";
+    f.appendChild(im);
+    var cap = el("figcaption"); cap.appendChild(el("span", null, p.t)); cap.appendChild(el("span", null, (i < 9 ? "0" : "") + (i + 1)));
+    f.appendChild(cap); $("gal").appendChild(f);
+  });
+
+  CONFIG.software.forEach(function (s) {
+    var a = el("div", "app");
+    var ic = el("div", "ic", s.i); ic.style.background = s.bg; ic.style.color = s.fg;
+    if (s.i === "Canva") ic.style.fontSize = "15px";
+    a.appendChild(ic); a.appendChild(el("div", "nm", s.n));
+    var m = el("div", "meter"); m.setAttribute("role", "img"); m.setAttribute("aria-label", s.p + " percent");
+    var f = document.createElement("i"); f.style.setProperty("--p", s.p + "%"); m.appendChild(f); a.appendChild(m);
+    $("soft").appendChild(a);
+  });
+
+  $("mail").textContent = CONFIG.email;
+  var cb = $("copy");
+  cb.addEventListener("click", function () {
+    var ok = function () { cb.textContent = "Copied"; setTimeout(function () { cb.textContent = "Copy email"; }, 1600); };
+    var no = function () {
+      var r = document.createRange(); r.selectNodeContents($("mail"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); cb.textContent = "Press Ctrl/Cmd+C";
+    };
+    try { navigator.clipboard.writeText(CONFIG.email).then(ok, no); } catch (e) { no(); }
+  });
+})();
+</script>
+
+</body></html>
